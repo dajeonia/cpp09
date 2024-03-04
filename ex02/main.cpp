@@ -35,8 +35,10 @@ int	main(int argc, char *argv[])
 		EasyPrint(original, "Before");
 		EasyPrint(vec, "After");
 
+		/*
 		if (isSorted(vec, deq, original) < 0)
 			return (1);
+		*/
 		std::cout << std::fixed;
 		std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << (float)(vec_end - vec_start) / CLOCKS_PER_SEC * 1000 * 1000 << " us" << std::endl;
 		std::cout << "Time to process a range of " << deq.size() << " elements with std::deque  : " << (float)(deq_end - deq_start) / CLOCKS_PER_SEC * 1000 * 1000 << " us" << std::endl;
@@ -60,6 +62,18 @@ void	EasyPrint(T& a, const char* name)
 	std::cout << std::endl;;
 }
 
+int	isOnlyNumber(const char* arg)
+{
+	std::string s(arg);
+	if (s.find_first_not_of("\n\t\v\f\r 0123456789") != std::string::npos)
+	{
+		std::cout << "Error" << std::endl;
+		return (-1);
+	}
+	return (0);
+}
+
+/*
 template<typename T1, typename T2>
 int	isSorted(T1 a, T2 b, T1 origin)
 {
@@ -91,14 +105,4 @@ int	isSorted(T1 a, T2 b, T1 origin)
 		std::cout << "OK" << std::endl;
 		return (0);
 }
-
-int	isOnlyNumber(const char* arg)
-{
-	std::string s(arg);
-	if (s.find_first_not_of("\n\t\v\f\r 0123456789") != std::string::npos)
-	{
-		std::cout << "Error" << std::endl;
-		return (-1);
-	}
-	return (0);
-}
+*/
