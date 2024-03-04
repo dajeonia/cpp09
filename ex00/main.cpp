@@ -16,7 +16,6 @@ int	main(int argc, char* argv[]) try
 			std::cout << "Error: could not open file." << std::endl;
 			return (1);
 		}
-		std::cout << "OK" << std::endl;
 		try {
 			std::string buf;
 			getline(input, buf);
@@ -32,25 +31,26 @@ int	main(int argc, char* argv[]) try
 					std::cout << "Error: bad input" << std::endl;
 					continue ;
 				}
-				Date d(buf);
-				float f(std::strtod(buf.substr(buf.find_first_of("|") + 1, buf.size()).c_str(), NULL));
-				if (!(0 <= f && f <= 1000))
-				{
+				try {
+					Date d(buf);
+					float f(std::strtod(buf.substr(buf.find_first_of("|") + 1, buf.size()).c_str(), NULL));
+					if (!(0 <= f && f <= 1000))
+					{
+						std::cout << "Error: bad input" << std::endl;
+						continue ;
+					}
+					std::cout << std::fixed << d << " => " << f << " = " << exchanger.exchange(d, f) << std::endl;
+				}
+				catch (std::exception& e) {
 					std::cout << "Error: bad input" << std::endl;
 					continue ;
 				}
-
-				std::cout << std::fixed << d << " => " << f << " = " << exchanger.exchange(d, f) << std::endl;
 			}
 		}
 		catch (std::exception& e) {
 			input.close();
 			throw ;
 		}
-
-		
-
-
 	}
 	else
 	{

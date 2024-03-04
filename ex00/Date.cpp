@@ -13,22 +13,12 @@ Date::Date(std::string s)
 	month = std::atoi(s.substr(5, 2).c_str());
 	day = std::atoi(s.substr(8, 2).c_str());
 	if (!validate(year, month, day))
-	{
-		std::cout << year << ", ";
-		std::cout << month << ", ";
-		std::cout << day << std::endl;
 		throw (DateNotValidException());
-	}
 }
 
 Date::Date(int y, int m, int d) : year(y), month(m), day(d) {
 	if (!validate(y, m, d))
-	{
-		std::cout << y << ", ";
-		std::cout << m << ", ";
-		std::cout << d << std::endl;
 		throw (DateNotValidException());
-	}
 }
 
 Date::Date(const Date& d) : year(d.year), month(d.month), day(d.day) { }
