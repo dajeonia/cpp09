@@ -1,6 +1,6 @@
-NAME = btc
-SOURCES = main.cpp Date.cpp BitcoinExchange.cpp
-INCLUDES = Date.hpp BitcoinExchange.hpp
+NAME = RPN
+SOURCES = main.cpp RPN.cpp
+INCLUDES = RPN.hpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o))
 SRCS = $(addprefix $(SRC_DIR)/, $(SOURCES))
